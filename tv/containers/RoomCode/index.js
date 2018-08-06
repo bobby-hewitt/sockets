@@ -3,40 +3,43 @@ import TVEventHandler from 'TVEventHandler';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
-  Button
+  View
 } from 'react-native';
 
 
-
- class Home extends Component{
+ class RoomCode extends Component{
 
  	constructor(props){
  		super(props)
- 		window.navigator.userAgent = 'ReactNative';
-	  
  		this.state = {
- 			x: 1
+
  		}
  	}
 
+ 	componentWillMount(){
+ 		console.log('mounting room code')
+ 	}
+
+ 	componentWillReceiveProps(np){
+ 		console.log(np)
+	}
 
 
 
 
- render() {
-   
-    return (
-      <Button
-        title="Go to Jane's profile"
-        onPress={this.onPress.bind(this)}
-      />
-    );
-  }
+
+	  render(){
+	  	return(
+	  		<View style={styles.container}>
+	  			<Text style={styles.text}>RoomCode{this.props.roomCode}</Text>	
+	  		</View>
+	  		
+	  		
+	  		)
+	  }
 }
 
 
@@ -48,31 +51,25 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
- 
+
 }, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(RoomCode)
 
 const styles = StyleSheet.create({
-  box:{
-  	flex:1,
-  	height:200,
-  	width:200,
-  	margin:10,
-  },
   container: {
-    flex: 1,
+    height:1080,
+    width:1920,
     flexDirection:'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
-
   text:{
-  	fontSize:50,
-  	color:'#101010'
+  	color:'#101010',
+  	fontSize:20,
   }
 });
