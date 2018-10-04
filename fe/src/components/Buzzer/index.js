@@ -12,6 +12,12 @@ class Buzzer extends Component {
 		buzz(this)
 	}
 
+	componentWillMount(){
+		if (!this.props.room){
+			this.props.push('')
+		}
+	}
+
 	render(){
 		return(
 			<div className="buzzerContainer" onClick={this.onClick.bind(this)}>

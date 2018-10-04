@@ -1,6 +1,7 @@
 //app setup
 var cors = require('cors')
-var app = require('express')();
+const express = require('express')
+const app = express()
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 const mongoose = require('mongoose')
@@ -8,13 +9,14 @@ require('dotenv').config({path: '.env'})
 const bodyParser = require('body-parser')
 app.use(cors())
 var PORT = process.env.PORT || 9000
+const path = require('path')
 const Rooms = require('./models/rooms')
 app.use( bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }))
 // set up database connection
-
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL);
@@ -29,6 +31,14 @@ mongoose.connection.on('connected', function() {
 const PlayerConnection = require('./MethodsPlayer/connection')
 const HostConnection = require('./MethodsHost/connection')
 //event handlers
+
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+});
+
+
 io.on('connection', function(socket){  
   // socket.on('test', test.bind(this, socket));
   socket.on('disconnect', disconnect.bind(this, socket));
@@ -58,6 +68,3 @@ http.listen(PORT, function(err){
 });
 
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-});

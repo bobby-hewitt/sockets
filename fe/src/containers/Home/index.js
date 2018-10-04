@@ -2,40 +2,34 @@ import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {
-  addToCount,
-  subtractFromCount
-} from '../../actions/counter'
+import './styles.css'
 
-import io from 'socket.io-client';
 
 
 
 class Home extends Component {
-  constructor(props){
-    super(props)
-    this.socket = io('http://localhost:9000')
-  }
 
-  componentWillMount(){
-    this.socket.emit('test', 'hi there')
-  }
   render(){
     return(
-      <div>
+      <div className="homeContainer">
+        <div className="hostButton homeButton" onClick={this.props.push.bind(this, 'host')}>
+          Host
+        </div>
+        <div className="playerButton homeButton" onClick={this.props.push.bind(this, 'player/join')}>
+          Player
+        </div>
       </div>
     )
   }
 }
 const mapStateToProps = state => ({
-  count: state.counter.count
+  
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  addToCount,
-  subtractFromCount,
+
   //declare the change page function in mapDispatchToProps
-  changePage: () => push('/about')
+  push: (path) => push('/' + path)
 }, dispatch)
 
 export default connect(

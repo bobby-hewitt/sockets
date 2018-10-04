@@ -5,6 +5,7 @@ import Join from './containers/Join'
 import About from './containers/About'
 import SocketListener from './containers/SocketListener'
 import Waiting from './containers/Waiting'
+import Home from './containers/Home'
 import Host from './containers/Host'
 import Player from './containers/Player'
 
@@ -20,9 +21,9 @@ class Routes extends Component {
     return(
       <div>
         <main>
-          
-          <div className="container">
 
+          <div className="container">
+          <Route exact path="/" component={Home} />
           <Route exact path="/waiting" component={Waiting} />
           <Route exact path="/about" component={About} />
           <Route path="/player" component={Player} />
