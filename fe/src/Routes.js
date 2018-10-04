@@ -20,7 +20,7 @@ class Routes extends Component {
     return(
       <div>
         <main>
-
+          
           <div className="container">
 
           <Route exact path="/waiting" component={Waiting} />

@@ -30,7 +30,10 @@ export default (state = initialState, action) => {
         round: state.round + 1,
       }
     case 'SET_RESPONSES':
-      let responses = Object.assign([], state.responses)
+      let responses = Object.assign([], state.responses).sort(function(obj1, obj2) {
+      // Ascending: first age less than the previous
+      return obj1.time - obj2.time;
+    });
       responses.push(action.payload)
       return {
         ...state,

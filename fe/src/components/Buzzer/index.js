@@ -15,7 +15,7 @@ class Buzzer extends Component {
 	render(){
 		return(
 			<div className="buzzerContainer" onClick={this.onClick.bind(this)}>
-				BUZZ
+				<h1>BUZZ</h1>
 			</div>
 		)
 	}

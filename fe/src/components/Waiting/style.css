@@ -1,4 +1,4 @@
-.buzzerContainer{
+.waitingContainer{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -7,6 +7,5 @@
 	color:#f7f7f7;
 	h1{
 		font-size:70px;
-
 	}
 }

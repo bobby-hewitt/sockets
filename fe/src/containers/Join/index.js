@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { joinRoom } from '../../sockets/player'
 import { setSelf } from '../../actions/player'
-
+import './style.css'
 
 
 
@@ -24,12 +24,20 @@ class Join extends Component {
 
   render(){
     return(
-      <div>
+      <div className="playerInnerContainer">
+      <div className="joinContanier">
+        <div>
         <input placeholder="name"type="name" ref="name" />
+        </div>
+        <div>
         <input placeholder="room code"type="text" ref="roomCode" />
+        </div>
+        <div>
         <button onClick={this.onClick.bind(this)}>
         Go
         </button>
+        </div>
+      </div>
       </div>
     )
   }

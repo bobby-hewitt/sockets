@@ -1,5 +1,20 @@
 .playerCardContainer{
 	width:300px;
-	height:100px;
-	background:green;
+	height:70px;
+	color:#101010;
+	display: flex;
+	align-items: center;
+	padding:0 30px;
+	/* background:green; */
+	&.response{
+		height:40px;
+		margin-bottom:20px;
+		border-bottom: 5px solid #f8b195;
+		padding:0;
+	}
+	.secondary{
+		margin-left:15px;
+		opacity:0.5;
+		font-size:20px;
+	}
 }
