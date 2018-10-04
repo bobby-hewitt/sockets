@@ -13,7 +13,9 @@ function roomCodeGenerated(cb, data){
 }
 
 function playerJoined(cb, data){
-	console.log('player has joined')
+	console.log('player joined', data)
+	cb('addPlayer', data)
+	// console.log('player joined', data)
 }
 
 export { subscribeToSocketEvents };

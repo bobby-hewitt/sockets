@@ -8,9 +8,9 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
-import PlayerList from '../../components/PlayerList'
 
- class RoomCode extends Component{
+
+ class PlayerList extends Component{
 
  	constructor(props){
  		super(props)
@@ -19,38 +19,27 @@ import PlayerList from '../../components/PlayerList'
  		}
  	}
 
- 	componentWillMount(){
- 		console.log('mounting room code')
- 	}
-
- 	componentWillReceiveProps(np){
- 		console.log(np)
-	}
-
-
-
-
-
 	render(){
 	  	return(
-	  		<View style={styles.container}>
-	  			<Text style={styles.text}>RoomCode{this.props.roomCode}</Text>
-          <PlayerList />
-
-          
-	  		</View>
-	  		
-	  		
-	  		)
-	  }
+	  		<View >
+	  			{console.log(this.props.players)}
+	  			{this.props.players && this.props.players.map((p,i) => {
+	  				return(
+	  					<View key={i}>
+	  						<Text>{p.name}</Text>
+	  					</View>
+	  				)
+	  			})}
+	  		</View>	
+	  	)
+	}
 }
 
 
 
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  roomCode: state.roomCode.roomCode
+	players: state.players.players
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -60,7 +49,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RoomCode)
+)(PlayerList)
 
 const styles = StyleSheet.create({
   container: {

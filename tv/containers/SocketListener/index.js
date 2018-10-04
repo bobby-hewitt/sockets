@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native';
 import { setRoomCode } from '../../actions/roomCode'
+import { addPlayer } from '../../actions/players'
 import { subscribeToSocketEvents } from '../../sockets'
 
 
@@ -20,6 +21,7 @@ class SocketListener extends Component{
 
   componentDidMount(){
      subscribeToSocketEvents((action, data) => {
+        console.log(action)
         this.props[action](data)
      })
   }
@@ -36,7 +38,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  setRoomCode
+  setRoomCode,
+  addPlayer
 }, dispatch)
 
 export default connect(

@@ -2,34 +2,21 @@ import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { joinRoom } from '../../sockets/player'
-import { setSelf } from '../../actions/player'
+import { joinRoom } from '../../sockets'
 
 
 
 
-class Join extends Component {
+class Waiting extends Component {
   constructor(props){
     super(props)
   }
 
-  onClick(){
-    console.log('registered click on join button')
-    let obj = {
-      name: this.refs.name.value.toUpperCase(),
-      room: this.refs.roomCode.value.toUpperCase()
-    }
-    joinRoom(obj, this)
-  }
 
   render(){
     return(
       <div>
-        <input placeholder="name"type="name" ref="name" />
-        <input placeholder="room code"type="text" ref="roomCode" />
-        <button onClick={this.onClick.bind(this)}>
-        Go
-        </button>
+        
       </div>
     )
   }
@@ -40,7 +27,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   //declare the change page function in mapDispatchToProps
-  setSelf,
   changePage: () => push('/about')
 }, dispatch)
 
@@ -48,4 +34,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Join)
+)(Waiting)

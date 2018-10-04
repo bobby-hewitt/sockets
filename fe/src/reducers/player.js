@@ -1,14 +1,19 @@
 
 const initialState = {
-  roomCode: null
+  room: null
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_ROOM_CODE':
+    case 'SET_PLAYER_ROOM':
       return {
         ...state,
-        roomCode: action.payload,
+        room: action.payload,
+      }
+    case 'SET_SELF':
+      return {
+        ...state,
+        self: action.payload,
       }
     default:
       return state
